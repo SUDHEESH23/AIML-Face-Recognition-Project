@@ -40,7 +40,7 @@ cv.waitKey(0)
 
 recognizer = cv.FaceRecognizerSF.create("face_recognition_sface_2021dec.onnx","")
 
-face1_align = recognizer.alignCrop(ref_image. faceInAadhaar[1][0]) 
+face1_align = recognizer.alignCrop(ref_image, faceInAdhaar[1][0]) 
 face2_align = recognizer.alignCrop(query_image, faceInQuery[1][0])
 
 face1_feature=recognizer.feature(face1_align)
@@ -49,3 +49,17 @@ face2_feature=recognizer.feature(face2_align)
 cosine_score = recognizer.match(face1_feature, face2_feature, cv.FaceRecognizerSF_FR_COSINE)
 
 l2_score = recognizer.match(face1_feature, face2_feature, cv.FaceRecognizerSF_FR_NORM_L2)
+
+cosine_similarity_threshold= 0.363
+l2_similarity_threshold= 1.128
+
+msg = 'different identities'
+if cosine_score <= cosine_similarity_threshold:
+  msg = 'same identity'
+print('They have {}. cosine Distance: {}, threshold: {} (higher value means higher similarity, max 1.0).'.format(msg, cosine_score, cosine_similarity_threshold))
+
+
+msg = 'different identities'
+if l2_score <= l2_similarity_threshold:
+  msg = 'same identity'
+print('They have {}. NormL2 Distance: {}, threshold: {} (lower value means higher similarity, min 0.0).'.format(msg,l2_score, l2_similarity_threshold))
