@@ -37,3 +37,15 @@ visualize(query_image,faceInQuery)
 
 cv.imshow("face", query_image)
 cv.waitKey(0)
+
+recognizer = cv.FaceRecognizerSF.create("face_recognition_sface_2021dec.onnx","")
+
+face1_align = recognizer.alignCrop(ref_image. faceInAadhaar[1][0]) 
+face2_align = recognizer.alignCrop(query_image, faceInQuery[1][0])
+
+face1_feature=recognizer.feature(face1_align)
+face2_feature=recognizer.feature(face2_align)
+
+cosine_score = recognizer.match(face1_feature, face2_feature, cv.FaceRecognizerSF_FR_COSINE)
+
+l2_score = recognizer.match(face1_feature, face2_feature, cv.FaceRecognizerSF_FR_NORM_L2)
