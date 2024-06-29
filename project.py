@@ -6,8 +6,7 @@ import numpy as np
 def visualize(image,face,thickness = 2):
   for idx, face in enumerate(face[1]):
     coords = face[:-1].astype(np.int32) 
-    cv.rectangle(image,(coords[0],coords[1]),(coords[0]+coords[2], coords[1]+coords[3]),(0,255,0), thickness )
-
+    cv.rectangle(image,(coords[0],coords[1]),(coords[0]+coords[2], coords[1]+coords[3]),(0,255,0), thickness)
     cv.circle(image,(coords[4], coords[5]),2,(255,0,0),thickness)
     cv.circle(image,(coords[6], coords[7]),2,(0,0,255),thickness)
     cv.circle(image,(coords[8], coords[9]),2,(0,255,0),thickness)
@@ -54,7 +53,7 @@ cosine_similarity_threshold= 0.363
 l2_similarity_threshold= 1.128
 
 msg = 'different identities'
-if cosine_score <= cosine_similarity_threshold:
+if cosine_score >= cosine_similarity_threshold:
   msg = 'same identity'
 print('They have {}. cosine Distance: {}, threshold: {} (higher value means higher similarity, max 1.0).'.format(msg, cosine_score, cosine_similarity_threshold))
 
