@@ -14,10 +14,10 @@ This project implements a face recognition system using OpenCV with deep learnin
 - **OpenCV:** For face detection and recognition.
 - **ONNX Models:** `face_detection_yunet` for face detection and `face_recognition_sface` for face recognition.
 
-##Setup and Installation
+## Setup and Installation
 
--pip install opencv-python opencv-python-headless numpy
--python face_recognition_script.py --reference_image path/to/reference.jpg --query_image path/to/query.jpg
+- pip install opencv-python opencv-python-headless numpy
+- python face_recognition_script.py --reference_image path/to/reference.jpg --query_image path/to/query.jpg
 
 ## Contributing
 
